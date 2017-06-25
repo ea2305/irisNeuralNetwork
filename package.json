@@ -1,0 +1,29 @@
+{
+  "name": "iris-neural-network",
+  "version": "0.1.1",
+  "main": "app.js",
+  "private": false,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "license": "LICENCE.txt",
+  "collaborators" : [
+    "Elihu A. Cruz Albores",
+    "Victor Fernando Gil Calderón",
+    "Andrés Aguilar Cruz"
+  ],
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.8.1",
+    "node-sass-middleware": "0.9.8",
+    "novabrain": "^0.8.7",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.4.3"
+  }
+}
