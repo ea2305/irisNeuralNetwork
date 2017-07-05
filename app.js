@@ -1,4 +1,3 @@
-'use strict';
 
 /**
  * Main definition of node Application
@@ -6,21 +5,23 @@
  * @version 0.0.1
  * @since 18-06-2017
  */
+'use strict';
 
 //Variable definitions
 const express = require('express');
 
-let path = require('path'),
-    favicon = require('serve-favicon'),
-    logger = require('morgan'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
-    sassMiddleware = require('node-sass-middleware');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let sassMiddleware = require('node-sass-middleware');
 
 //Router definitions
-let index = require('./controller/routes/index'),
-    neuralNetwork = require('./controller/routes/neuralNetwork');
-
+let index = require('./routes/index');
+let user  = require('./routes/user');
+let file  = require('./routes/file');
+let neuralNetwork = require('./routes/neuralNetwork');
 
 let app = express();
 
@@ -34,36 +35,39 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: true
-}));
-app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(sassMiddleware({
+    src: path.join(__dirname, 'public'),
+    dest: path.join(__dirname, 'public'),
+    indentedSyntax: true, // true = .sass and false = .scss
+    sourceMap: true
+}));
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Router configurations
 app.use('/', index);
+app.use('/user', user);
+app.use('/file', file);
 app.use('/network', neuralNetwork );
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;

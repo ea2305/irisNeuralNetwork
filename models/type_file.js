@@ -1,15 +1,14 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var File = sequelize.define('File', {
+  var Type_File = sequelize.define('Type_File', {
     name: DataTypes.STRING,
-    description: DataTypes.TEXT
+    description: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        File.belongsTo(models.User);
-        file.belongsTo(models.Type_File);
+        Type_File.hasMany(models.File);
       }
     }
   });
-  return File;
+  return Type_File;
 };

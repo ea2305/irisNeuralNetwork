@@ -1,5 +1,5 @@
 /**
- * User routes
+ * Files routes
  * @author Elihu A. Cruz Albores
  * @version 0.1.0
  * @since 25-06-2017
@@ -8,14 +8,14 @@
 'use strict';
 
 const express = require('express');
-let user   = require('../controllers/User');
+let file   = require('../controllers/File');
 let router = express.Router();
 
 
 //Read all elements GET
 router.get('/', function( req, res, next ) {
 
-    user.list( function ( users ) {
+    file.list( function ( users ) {
         res
             .send( users )
             .status(200);
@@ -23,11 +23,11 @@ router.get('/', function( req, res, next ) {
 });
 
 //Read especific element GET
-router.get('/:userId', function( req, res, next ) {
+router.get('/:fileId', function( req, res, next ) {
 
-    let id = req.params.userId;
+    let id = req.params.fileId;
 
-    user.read( id , function ( user ) {
+    file.read( id , function ( user ) {
         res
             .send( user )
             .status(200);
@@ -39,7 +39,7 @@ router.post('/', function( req, res, next ) {
 
     let body = req.body;
 
-    user.create( body, function ( user ) {
+    file.create( body, function ( user ) {
         res
             .send( user )
             .status(201);
@@ -48,12 +48,12 @@ router.post('/', function( req, res, next ) {
 });
 
 //Update element PUT
-router.put('/:userId', function( req, res, next ) {
+router.put('/:fileId', function( req, res, next ) {
 
-    let id = req.params.userId;
+    let id = req.params.fileId;
     let body = req.body;
 
-    user.update( id, body, function ( result ) {
+    file.update( id, body, function ( result ) {
         res
             .json( result )
             .status(200);
@@ -61,11 +61,11 @@ router.put('/:userId', function( req, res, next ) {
 });
 
 //Delete element DELETE
-router.delete('/:userId', function( req, res, next ) {
+router.delete('/:fileId', function( req, res, next ) {
 
-    let id = req.params.userId;
+    let id = req.params.fileId;
 
-    user.delete( id, function ( result ) {
+    file.delete( id, function ( result ) {
         res
             .json( result )
             .status(200);
