@@ -14,35 +14,35 @@ let router = express.Router();
 //Read all elements GET     http://127.0.0.1/neural/
 router.get('/', function( req, res, next ){
     res
-        .send('RETURN ALL ELEMENTS')
+        .json('RETURN ALL ELEMENTS')
         .status(200);
 });
 
 //Read an element GET       http://127.0.0.1/neural/element_1
 router.get('/:elementId', function( req, res, next ){
     res
-        .send('RETURN AN ELEMENT')
+        .json('RETURN AN ELEMENT')
         .status(200);
 });
 
 //Create an element POST    http://127.0.0.1/neural/
 router.post('/', function( req, res, next ){
     res
-        .send('ELEMENT WAS CREATED')
+        .json('ELEMENT WAS CREATED')
         .status(200);
 });
 
 //Update an element UPDATE  http://127.0.0.1/neural/element_1
 router.put('/:elementId', function( req, res, next ){
     res
-        .send('ELEMENT WAS UPDATED')
+        .json('ELEMENT WAS UPDATED')
         .status(200);
 });
 
 //Delete an element DELETE  http://127.0.0.1/neural/element_1
 router.delete('/:elementId', function( req, res, next ){
     res
-        .send('ELEMENT WAS DELETED')
+        .json('ELEMENT WAS DELETED')
         .status(200);
 });
 

@@ -1,5 +1,5 @@
 /**
- * Files routes
+ * Type Files routes
  * @author Elihu A. Cruz Albores
  * @version 0.1.0
  * @since 25-06-2017
@@ -8,14 +8,13 @@
 'use strict';
 
 const express = require('express');
-let file   = require('../controllers/File');
+let type_file   = require('../controllers/Type_File');
 let router = express.Router();
 
 //Read all elements GET
 router.get('/', function( req, res, next ) {
 
-    file.list( function ( users ) {
-        console.log('okokoko');
+    type_file.list( function ( users ) {
         res
             .json( users )
             .status(200);
@@ -23,11 +22,11 @@ router.get('/', function( req, res, next ) {
 });
 
 //Read especific element GET
-router.get('/:fileId', function( req, res, next ) {
+router.get('/:typeFileId', function( req, res, next ) {
 
-    let id = req.params.fileId;
+    let id = req.params.typeFileId;
 
-    file.read( id , function ( user ) {
+    type_file.read( id , function ( user ) {
         res
             .json( user )
             .status(200);
@@ -39,7 +38,7 @@ router.post('/', function( req, res, next ) {
 
     let body = req.body;
 
-    file.create( body, function ( user ) {
+    type_file.create( body, function ( user ) {
         res
             .json( user )
             .status(201);
@@ -48,12 +47,12 @@ router.post('/', function( req, res, next ) {
 });
 
 //Update element PUT
-router.put('/:fileId', function( req, res, next ) {
+router.put('/:typeFileId', function( req, res, next ) {
 
-    let id = req.params.fileId;
+    let id = req.params.typeFileId;
     let body = req.body;
 
-    file.update( id, body, function ( result ) {
+    type_file.update( id, body, function ( result ) {
         res
             .json( result )
             .status(200);
@@ -61,11 +60,11 @@ router.put('/:fileId', function( req, res, next ) {
 });
 
 //Delete element DELETE
-router.delete('/:fileId', function( req, res, next ) {
+router.delete('/:typeFileId', function( req, res, next ) {
 
-    let id = req.params.fileId;
+    let id = req.params.typeFileId;
 
-    file.delete( id, function ( result ) {
+    type_file.delete( id, function ( result ) {
         res
             .json( result )
             .status(200);

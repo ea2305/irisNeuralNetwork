@@ -54,13 +54,13 @@ for (var i = 0; i < crossValidation[0].x.length ; i++)
 for (var j = 0; j < crossValidation[0].px.length ; j++)
     dataTest.push( { input: crossValidation[0].px[j], output: crossValidation[0].pyd[j] } );
 
-//network.transfer = Novabrain.Transfer.HARDLIMIT;
-network.transfer = Novabrain.Transfer.TANH;
+network.transfer = Novabrain.Transfer.HARDLIMIT;
+//network.transfer = Novabrain.Transfer.TANH;
 
 let resultTrain = trainer.train( dataTraining, {
 
     iterations : 2000000000000,
-    learning   : 0.001,
+    learning   : 0.004,
     momentum   : 0, //Alfa
     treshold   : 0.004,
     callback   : null,

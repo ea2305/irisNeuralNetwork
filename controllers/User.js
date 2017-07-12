@@ -4,7 +4,9 @@
  * @version 0.1.1
  * @since 04-07-2017
  */
-var models = require('../models/index');
+'use strict';
+
+const models = require('../models/index');
 
 module.exports = {
     //read all elements

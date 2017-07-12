@@ -19,8 +19,9 @@ let sassMiddleware = require('node-sass-middleware');
 
 //Router definitions
 let index = require('./routes/index');
-let user  = require('./routes/user');
-let file  = require('./routes/file');
+let user_router  = require('./routes/user');
+let file_router  = require('./routes/file');
+let type_file_router = require('./routes/type_file');
 let neuralNetwork = require('./routes/neuralNetwork');
 
 let app = express();
@@ -47,16 +48,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Router configurations
 app.use('/', index);
-app.use('/user', user);
-app.use('/file', file);
+app.use('/user', user_router);
+app.use('/file', file_router);
+app.use('/type_file', type_file_router);
 app.use('/network', neuralNetwork );
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+   res
+       .json({
+           msg : "Error, Resource not found"
+       })
+       .status(400);
 });
 
 // error handler

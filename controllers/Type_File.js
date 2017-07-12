@@ -4,20 +4,23 @@
  * @version 0.1.1
  * @since 04-07-2017
  */
+'use strict';
+
+const models = require('../models/index');
 
 module.exports = {
 
     //read all elements
     list : function ( next ) {
-        models.Type_File.findAll().then( type_files => {
-            next( type_files );
+        models.Type_File.findAll().then( files => {
+            next( files );
         })
     },
     //read element
     read : function ( id, next ) {
         // search for known ids
-        models.Type_File.findById( id ).then( type_file => {
-            next( type_file );
+        models.Type_File.findById( id ).then( file => {
+            next( file );
         })
     },
     //create element
@@ -29,10 +32,10 @@ module.exports = {
                 description: body.description
             }
         })
-            .spread( function ( type_file, created) {
-                console.log( created );
-                next( type_file );
-            });
+        .spread( function ( file, created) {
+            console.log( created );
+            next( file );
+        });
     },
     //update element
     update : function (id, body , next ) {
@@ -41,11 +44,12 @@ module.exports = {
                 name: body.name,
                 description: body.description
             },
-            { where: { id: id }
-            })
-            .then( function ( type_file ) {
-                next( type_file );
-            })
+                { where: { id: id }
+            }
+        )
+        .then( function ( file ) {
+            next( file );
+        })
     },
     //delete element
     delete : function ( id, next ) {
@@ -54,8 +58,8 @@ module.exports = {
                 id : id
             }
         })
-        .then( function ( type_file ) {
-            next( type_file );
+        .then( function ( file ) {
+            next( file );
         })
     }
 }

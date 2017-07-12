@@ -17,7 +17,7 @@ router.get('/', function( req, res, next ) {
 
     user.list( function ( users ) {
         res
-            .send( users )
+            .json( users )
             .status(200);
     });
 });
@@ -29,7 +29,7 @@ router.get('/:userId', function( req, res, next ) {
 
     user.read( id , function ( user ) {
         res
-            .send( user )
+            .json( user )
             .status(200);
     })
 });
@@ -41,7 +41,7 @@ router.post('/', function( req, res, next ) {
 
     user.create( body, function ( user ) {
         res
-            .send( user )
+            .json( user )
             .status(201);
     });
 

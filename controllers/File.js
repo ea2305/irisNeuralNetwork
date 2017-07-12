@@ -4,13 +4,16 @@
  * @version 0.1.1
  * @since 04-07-2017
  */
+'use strict';
+
+const models = require('../models/index');
 
 module.exports = {
 
     //read all elements
     list : function ( next ) {
         models.File.findAll().then( files => {
-            next( file );
+            next( files );
         })
     },
     //read element
