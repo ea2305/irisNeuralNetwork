@@ -7,6 +7,7 @@
 'use strict';
 
 const models = require('../models/index');
+let moment = require('moment')();
 
 module.exports = {
     //read all elements
@@ -22,6 +23,13 @@ module.exports = {
             next( user );
         })
     },
+    //read element
+    readByEmail : function (email, next ) {
+        // search for known ids
+        models.User.findOne({ where: { email: email } }).then( user => {
+            next( user );
+        })
+    },
     //create element
     create : function ( body, next ) {
         models.User.findOrCreate({
@@ -30,8 +38,9 @@ module.exports = {
             defaults: {
                 name: body.name,
                 phone: body.phone,
-                dirthdate: body.dirthdate,
-                iris_weight_path: body.iris_weight_path
+                birthdate: moment.format('YYYY-MM-DD HH:mm:ss'),
+                iris_weight_path: body.iris_weight_path,
+                password: body.password
             }
         })
         .spread( function (user, created) {
@@ -46,7 +55,8 @@ module.exports = {
                 name: body.name,
                 email: body.email,
                 phone: body.phone,
-                dirthdate: body.dirthdate,
+                birthdate: moment.format('YYYY-MM-DD HH:mm:ss'),
+                password: body.password,
                 iris_weight_path: body.iris_weight_path
 
             },

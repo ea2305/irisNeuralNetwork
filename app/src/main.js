@@ -4,6 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import 'bulma/css/bulma.css';
+import 'font-awesome/css/font-awesome.css';
+import './assets/css/main.css';
+
+//Librerias de javascript
+import 'axios';
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

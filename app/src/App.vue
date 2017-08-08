@@ -1,54 +1,30 @@
 <template>
   <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
-    </header>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
+
+      <navbar-component></navbar-component>
       <router-view></router-view>
+      <footer-component></footer-component>
+
     </main>
   </div>
 </template>
 
 <script>
+
+import Navbar from './components/Navbar.vue';
+import Footer from './components/FooterBar.vue';
+import FooterComponent from "./components/FooterBar";
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    FooterComponent,
+    'navbar-component': Navbar,
+    'footer-component': Footer
+  }
 }
 </script>
 
 <style>
-body {
-  margin: 0;
-}
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-main {
-  text-align: center;
-  margin-top: 40px;
-}
-
-header {
-  margin: 0;
-  height: 56px;
-  padding: 0 16px 0 24px;
-  background-color: #35495E;
-  color: #ffffff;
-}
-
-header span {
-  display: block;
-  position: relative;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: .02em;
-  font-weight: 400;
-  box-sizing: border-box;
-  padding-top: 16px;
-}
 </style>

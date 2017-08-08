@@ -33,8 +33,9 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json({limit: '20mb'}));
+app.use(bodyParser.urlencoded({limit: '20mb', extended: false }));
 app.use(cookieParser());
 
 app.use(sassMiddleware({
@@ -45,6 +46,9 @@ app.use(sassMiddleware({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+//IMPORTANT
+app.use('/static',express.static(path.join(__dirname, 'app/dist/static')));
 
 //Router configurations
 app.use('/', index);

@@ -13,6 +13,7 @@ let moment = require('moment')();
         name: e,
         email: e + "@mail.com",
         phone: "090090990099",
+        password: "e",
         birthdate: moment.format('YYYY-MM-DD HH:mm:ss'),
         iris_weight_path: "./none" + e + ".txt"
     });

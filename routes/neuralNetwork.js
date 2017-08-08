@@ -10,23 +10,41 @@
 const express = require('express');
 
 let router = express.Router();
+let dataset = require( '../neuralNetwork/trainModule' );
+let fileReader = require('../Libraries/ReadUtil');
+let dataUtil   = require('../Libraries/DataSetUtil');
+
+const Novabrain = require('novabrain');
+let currNetwork;
+
 
 //Read all elements GET     http://127.0.0.1/neural/
 router.get('/', function( req, res, next ){
     res
-        .json('RETURN ALL ELEMENTS')
+        .json(currNetwork)
         .status(200);
 });
 
 //Read an element GET       http://127.0.0.1/neural/element_1
 router.get('/:elementId', function( req, res, next ){
+
     res
-        .json('RETURN AN ELEMENT')
+        .json("Return Element")
         .status(200);
 });
 
 //Create an element POST    http://127.0.0.1/neural/
 router.post('/', function( req, res, next ){
+    console.log(' Obtención de datos de registro');
+
+        // entradas verdaderas
+        // datos erroneos
+
+    // Obtención de red neuronal
+        // Creación
+        // Guardados en archivo
+
+
     res
         .json('ELEMENT WAS CREATED')
         .status(200);

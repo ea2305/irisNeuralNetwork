@@ -7,6 +7,7 @@
 'use strict';
 
 const fs = require( 'fs' );
+const path = require( 'path' );
 
 /**
  * Get text from a file with a format
@@ -16,6 +17,7 @@ const fs = require( 'fs' );
  * @return {Number[]} text : Elements in the text read
  */
 module.exports = {
+
     getArrayFromText : function ( nameFile, path, format ) {
         //Setting up elements
         path = path || './';
@@ -36,5 +38,28 @@ module.exports = {
         }catch( e ){ console.error( `Error> ${ e }` ) }
 
         return text;
+    },
+
+    readJSON : function ( nameFile ) {
+        try{
+            //Lectura de los datos
+            let currentText = fs.readFileSync( path.join( './training/', nameFile ) , 'utf8' );
+
+            return JSON.parse( currentText );
+
+        }catch( e ){ console.error( `Error> ${ e }` ) }
+    },
+
+    writeFileDataset : function ( nameFile, element ) {
+
+        try {
+
+            fs.writeFileSync( path.join('./training/',nameFile) , element, 'utf8' );
+            console.log( "The file was saved [ ./training/" +  nameFile + " ]" );
+
+        } catch ( e ) {
+            console.error( "Err>" + e );
+        }
+        return "ok";
     }
 };

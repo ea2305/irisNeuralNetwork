@@ -1,0 +1,21 @@
+/*
+ Definicion de estilos base
+*/
+
+/* Reglas de margen */
+
+.slide{
+  min-height: 100vh !important;
+  height: auto;
+}
+
+/* Reglas de color de fondo */
+.black{
+  background: black;
+}
+
+/*  Reglas de color de texto */
+
+.c-white{
+  color: #ffffff;
+}

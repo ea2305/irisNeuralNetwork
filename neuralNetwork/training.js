@@ -33,9 +33,18 @@ let crossValidation;
 let dataTraining = [];
 let dataTest     = [];
 
-//Data read
+// Data read
+/**
+ * Modify the elements of iris stream
+ *
+ */
+
 X  = fileReader.getArrayFromText( 'x.txt', './training/Datasets/', 'utf8' );
 Yd = fileReader.getArrayFromText( 'Yd.txt', './training/Datasets/', 'utf8' );
+
+console.log( "X length",  X.length );
+console.log( "Y length",  Yd.length );
+
 
 //Shuffle elements
 seed  = dataUtil.uniqueRandomNumber( 0, ( totalelements - 1 ) ); //Get seeder to mix
@@ -46,7 +55,7 @@ newYd = dataUtil.shuffle( Yd , seed );
 
 //We'll get the elements to use in the cross Validation
 crossValidation = dataUtil.getDataTest( newX , newYd, 5 );
-//console.log( crossValidation );
+console.log( crossValidation );
 
 for (var i = 0; i < crossValidation[0].x.length ; i++)
     dataTraining.push( { input: crossValidation[0].x[i], output: crossValidation[0].yd[i] } );
@@ -105,9 +114,3 @@ let MST  = ( ( 1 / totalelements ) * ( MSEe + MSEv ) );
 
 //console.log( "Error Entrenamiento: " , resultTrain.error, " Iterators: ", resultTrain.iterations, " Times: ", resultTrain.time );
 console.log( "MSEv: ", MSEv , " Error Training: ", resultTrain.error , " MSEe: ", MSEe , " MST: ", MST );
-
-network.layers.forEach( ( e, index ) => {
-
-    console.log( index , " -> " , e.neurons);
-
-})
